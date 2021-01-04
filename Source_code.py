@@ -31,3 +31,4 @@ def cartoonify(ImagePath):
   #Ploting the final transition
   
   #finished on listing all the steps to be done in this function
+  #To figure out code about each step in next sitting
