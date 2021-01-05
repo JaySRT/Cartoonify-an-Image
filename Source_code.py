@@ -79,6 +79,6 @@ def save(ReSized6, ImagePath):
     tk.messagebox.showinfo(title=None, message=I)
 
           
-          
+          #Not finished yet.
           
  
