@@ -22,7 +22,16 @@ def upload():
 
 def cartoonify(ImagePath):
   #read the image
-  #print image
+  originalImage = cv2.imread(ImagePath)
+  originalImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2RGB)
+  #print(image)  #Image is stored in form of numbers
+  
+  if originalImage is None:
+    print('Can not find any image. Choose approptiate file")
+    sys.exit()
+         
+  Resized1 = cv2. resize(originalImage, (960,540))
+  #plt.imshow(Resized1, cmap = 'grap')
   #convert an image to grayscale
   #apply median blur
   #Retrieve the edges for cartoon effect
