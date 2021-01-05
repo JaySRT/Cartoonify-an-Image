@@ -58,9 +58,27 @@ def cartoonify(ImagePath):
   cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask=getEdge)
   ReSized6 = cv2.resize(cartoonImage, (960, 540))
   #plt.imshow(ReSized6, cmap='gray')
+  
+  # Plotting the whole transition
+  images=[ReSized1, ReSized2, ReSized3, ReSized4, ReSized5, ReSized6]
+  fig, axes = plt.subplots(3,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
+  for i, ax in enumerate(axes.flat):
+      ax.imshow(images[i], cmap='gray')
+  //save button code
+  plt.show()
+  
+#function for SAVE Button
+def save(ReSized6, ImagePath):
+    #saving an image using imwrite()
+    newName="cartoonified_Image"
+    path1 = os.path.dirname(ImagePath)
+    extension=os.path.splitext(ImagePath)[1]
+    path = os.path.join(path1, newName+extension)
+    cv2.imwrite(path, cv2.cvtColor(ReSized6, cv2.COLOR_RGB2BGR))
+    I = "Image saved by name " + newName +" at "+ path
+    tk.messagebox.showinfo(title=None, message=I)
+
           
-  
-  #Ploting the final transition
-  
-  #finished on listing all the steps to be done in this function
-  #To figure out code about each step in next sitting
+          
+          
+ 
