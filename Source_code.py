@@ -32,11 +32,34 @@ def cartoonify(ImagePath):
          
   Resized1 = cv2. resize(originalImage, (960,540))
   #plt.imshow(Resized1, cmap = 'grap')
+  
   #convert an image to grayscale
-  #apply median blur
+  graySaleImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
+  Resized2 = cv2.resize(grayScaleImage, (960, 540))
+  #plt.imshow(Resized2, cmap = 'gray')
+  
+  #apply median blur to smoothen an image
+  smoothGrayScale = cv2.medianBlur(grayScaleImage, 5)
+  Resized3 = cv2.resize(smoothGrayScale, (960, 540))
+  #plt.imshow(ReSized3, cmap = 'gray')
+  
   #Retrieve the edges for cartoon effect
-  #Noise removal
+  getEdge = cv2.adaptiveThreshold(smoothGrayScale, 255, cv2.ADAPTIVE_THRESH_MEAN_C, CV2.THRESH_BINARY, 9 ,9)
+  ReSized4 = cv2.ReSize(getEdge, (960, 540))
+  #plt.imshow(ReSized4, cmap='gray')   
+          
+  #applying bilateral filter to remove noise and keep edge sharp as required
+  colorImage = cv2.bilateralFilter(originalImage, 9, 300, 300)
+  ReSized5 = cv2.resize(colorImage, (960, 540))
+  #plt.imshow(ReSized5, cmap='gray')        
+  
   #Giving a cartoon effect
+  #masking edged image with our "BEAUTIFY" image
+  cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask=getEdge)
+  ReSized6 = cv2.resize(cartoonImage, (960, 540))
+  #plt.imshow(ReSized6, cmap='gray')
+          
+  
   #Ploting the final transition
   
   #finished on listing all the steps to be done in this function
