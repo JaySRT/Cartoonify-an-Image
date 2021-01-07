@@ -9,4 +9,4 @@ python source_code.py
 On the pop-up, select a photograph you want to cartoonify. 
 Save the photo if it is as per the requirement.
 Adjust the aspect ratio in the source code file as per the need.
-Modify print 
+Modify printing all the versions by making changes in line 71.
