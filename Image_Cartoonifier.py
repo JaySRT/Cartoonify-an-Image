@@ -73,14 +73,14 @@ def cartoonify(ImagePath):
     fig, axes = plt.subplots(3,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
     for i, ax in enumerate(axes.flat):
         ax.imshow(images[i], cmap='gray')
-
+    
+    #keeping a Save button will let the user save the Photograph
     save1=Button(top,text="Save cartoon image",command=lambda: save(ReSized6, ImagePath),padx=30,pady=5)
     save1.configure(background='#364156', foreground='white',font=('calibri',10,'bold'))
     save1.pack(side=TOP,pady=50)
     
     plt.show()
 
-  
 #function for SAVE Button
 def save(ReSized6, ImagePath):
     #saving an image using imwrite()
@@ -92,7 +92,7 @@ def save(ReSized6, ImagePath):
     I = "Image saved by name " + newName +" at "+ path
     tk.messagebox.showinfo(title=None, message=I)
 
-          
+#This upload button will ask the user to select a photograph         
 upload=Button(top,text="Cartoonify an Image",command=upload,padx=10,pady=5)
 upload.configure(background='#364156', foreground='white',font=('calibri',10,'bold'))
 upload.pack(side=TOP,pady=50)
